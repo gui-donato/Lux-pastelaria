@@ -72,16 +72,23 @@ body {
   height: 100%;
   background-color: #fff;
   padding: 20px;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
   z-index: 10;
-  overflow-y: auto;
+  overflow-y: hidden;
   border-left: 2px solid #ffcc00;
+  border-radius: 10px 0 0 10px; /* Bordas arredondadas no canto superior esquerdo e inferior esquerdo */
 }
 
+/* Área do pedido fixa, apenas os itens terão rolagem */
 .cart-modal h2 {
   margin-top: 0;
   font-size: 1.5rem;
   color: #b31e1e;
+}
+
+.cart-modal .cart-items {
+  max-height: calc(100% - 240px); /* Ajusta a altura para garantir mais espaço entre os itens e o botão */
+  overflow-y: auto;
 }
 
 .cart-modal ul {
@@ -127,17 +134,21 @@ body {
 /* Botão de Finalizar Pedido */
 .finalize-order {
   padding: 10px 20px;
-  background-color: #b31e1e; /* Cor igual ao botão Ver Pedido */
+  background-color: #b31e1e;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 20px;
+  position: sticky;
+  bottom: 30px; /* Aumenta o espaço entre o botão e o fundo */
+  z-index: 10;
 }
 
 .finalize-order:hover {
   background-color: #9b1919;
 }
+
 
 /* Botão Fixo "Ver Pedido" */
 .view-cart {
@@ -160,5 +171,3 @@ body {
 .view-cart.animate {
   animation: shake 0.5s ease-in-out;
 }
-
-

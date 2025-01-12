@@ -9,12 +9,16 @@ const Menu = () => {
   const color = "#b31e1e"; // Definição da cor para o botão de animação
 
   const handleAddToCart = (item) => {
-    setCart([...cart, item]); // Adiciona o item ao carrinho
+    const updatedCart = [...cart, item]; // Adiciona o item ao carrinho
+    setCart(updatedCart); // Atualiza o estado do carrinho
+    sessionStorage.setItem('cart', JSON.stringify(updatedCart)); // Salva no sessionStorage
     setAnimateCartButton(true); // Inicia a animação de piscada
   };
 
   const handleRemoveFromCart = (itemToRemove) => {
-    setCart(cart.filter(item => item !== itemToRemove)); // Remove item do carrinho
+    const updatedCart = cart.filter(item => item !== itemToRemove); // Remove item do carrinho
+    setCart(updatedCart); // Atualiza o estado do carrinho
+    sessionStorage.setItem('cart', JSON.stringify(updatedCart)); // Atualiza no sessionStorage
   };
 
   const handleCloseCart = () => {
@@ -48,6 +52,14 @@ const Menu = () => {
       { nome: 'Água com Gás', preco: 3.00 },
     ] },
   ];
+
+  // Carregar o carrinho do sessionStorage ao carregar a página
+  useEffect(() => {
+    const storedCart = sessionStorage.getItem('cart');
+    if (storedCart) {
+      setCart(JSON.parse(storedCart)); // Carrega os itens salvos do sessionStorage
+    }
+  }, []);
 
   useEffect(() => {
     // A animação de "flash" no botão "Ver Pedido" ocorre apenas uma vez quando o carrinho recebe um item
@@ -88,14 +100,16 @@ const Menu = () => {
           {cart.length === 0 ? (
             <p>O carrinho está vazio.</p>
           ) : (
-            <ul>
-              {cart.map((item, idx) => (
-                <li key={idx}>
-                  {item.nome} - R${item.preco.toFixed(2)}
-                  <button className="remove-item" onClick={() => handleRemoveFromCart(item)}>Remover</button>
-                </li>
-              ))}
-            </ul>
+            <div className="cart-items">
+              <ul>
+                {cart.map((item, idx) => (
+                  <li key={idx}>
+                    {item.nome} - R${item.preco.toFixed(2)}
+                    <button className="remove-item" onClick={() => handleRemoveFromCart(item)}>Remover</button>
+                  </li>
+                ))}
+              </ul>
+            </div>
           )}
           {cart.length > 0 && (
             <p>
