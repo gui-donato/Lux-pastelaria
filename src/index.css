@@ -1,0 +1,22 @@
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f8f8f8;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+  .menu-category {
+    font-size: 0.9rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+}

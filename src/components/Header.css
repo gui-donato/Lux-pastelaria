@@ -1,0 +1,40 @@
+.header {
+  padding: 40px 20px; /* Espaçamento interno */
+  text-align: center; /* Centraliza o texto */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  border-radius: 10px; /* Bordas arredondadas */
+  margin-bottom: 30px; /* Espaçamento externo */
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 3rem; /* Tamanho grande para o título */
+  color: #fff; /* Texto branco */
+  font-family: 'Roboto', sans-serif; /* Fonte estilosa */
+  text-transform: uppercase; /* Todas as letras maiúsculas */
+  font-weight: 700; /* Texto em negrito */
+  letter-spacing: 2px; /* Espaçamento entre letras */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Sombra no texto */
+}
+
+/* Ajustes para telas menores (menos de 768px) */
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 10px; /* Menos espaçamento interno */
+  }
+
+  .header h1 {
+    font-size: 2rem; /* Reduz o tamanho do texto */
+  }
+}
+
+/* Ajustes para telas muito pequenas (menos de 480px) */
+@media (max-width: 480px) {
+  .header {
+    padding: 10px 5px; /* Padding ainda menor */
+  }
+
+  .header h1 {
+    font-size: 1.5rem; /* Texto ainda menor */
+  }
+}
